@@ -1,0 +1,38 @@
+<?php include tpl("header");?>
+<div class="b-area-w">
+    <ul class="sidebar">
+            <li class="step-link"><?php echo $lang['install_step_license']; ?></li>
+            <li><?php echo $lang['install_step_os']; ?></li>
+            <li><?php echo $lang['install_step_option']; ?></li>
+            <li><?php echo $lang['install_step_finish']; ?></li>
+    </ul>
+</div>
+<div class="clear1"></div>
+<div class="cbody b-box">
+    
+	<div class="b-area-w">
+		
+		<form method="post" name="step1" action="index.php?step=2">
+		<table border="0" cellspacing="0" class="tb-b">
+			<tr>
+				<th><?php echo $lang['install_license'];?></th>
+			</tr>
+			<tr>
+				<td style="padding: 0;">
+					<textarea class="input-textarea t_l" readonly="readonly"> 
+						<?php echo $lang['install_license_content'];?>
+					</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td align="center"><input type="checkbox" name="agree" value="1" checked="checked" /><?php echo $lang['install_agree'];?></td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="submit" value="<?php echo $lang['install_btn_start']; ?>" class="input-btn-b" />
+		</div>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

@@ -1,0 +1,108 @@
+<?php include tpl("header");?>
+<div class="b-area-w">
+	<ul class="sidebar">
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+        </div>
+<div class="clear1"></div>
+<div class="cbody b-box">
+    
+	<div class="b-area-w">
+		<table border="0" cellspacing="0" class="tb-b blank5">
+                    <tr>
+                        <th><?php echo $lang['install_setting']; ?></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php 
+                                if($result_1 && file_exists(YUFUCMS_ROOT.$thinksns_config_file)){
+                                    echo $lang['config_log_success'];
+                                }else{
+                                    echo $lang['config_read_failed']; $quit = TRUE;
+                                }
+                            ?>
+                        </td>
+                    </tr>
+		</table>
+                <table border="0" cellspacing="0" class="tb-b">
+                    <tr>
+                        <th><?php echo $lang['import_processing']; ?></th>
+                    </tr>
+                    <tr>
+                        <td>
+                        <div class="import-echo">
+                            <?php foreach($ret as $query){
+                                    $query = trim($query);
+                                    if($query){
+                                            if(substr($query, 0, 12) == 'CREATE TABLE'){
+                                                    $name = preg_replace("/CREATE TABLE `([a-z0-9_]+)` .*/is", "\\1", $query);
+                                                    echo $lang['create_table'].' '.$name.' ... <span class="blue">OK</span><br />';
+                                                    @mysql_query(createtable($query, $db_charset));
+                                                    $tablenum ++;
+                                            }else{
+                                                    @mysql_query($query);
+                                            }
+                                    }
+                            }?>
+                        </div>
+                        </td>
+                    </tr>
+		</table>
+		<table border="0" cellspacing="0" class="tb-b blank5">
+                    <tr>
+                        <th><?php echo $lang['create_founder']; ?></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php
+                                $siteFounder = $_SESSION['default_manager_account'];
+                                $time=time();
+                                $sql1="INSERT INTO `{$db_config['db_prefix']}user` (`account`,`nickname`,`password`,`login_count`,`create_time`,`status`,`role_id`) VALUES ('".$siteFounder['founder_name']."', '超级管理员', '".$siteFounder['password']."', '0', '".$time."', '1','0');";
+                                if(mysql_query($sql1)){
+                                        echo $lang['create_founder_success'].'...<span class="blue">OK</span>';
+                                }else{
+                                        echo $lang['create_founder_error'].$sql1.'...<span class="red">ERROR</span>';
+                                        $quit = true;
+                                }
+                            ?>
+                        </td>
+                    </tr>
+		</table>
+		<?php
+                    if(!$quit){
+                        fopen(YUFUCMS_ROOT.'/install/install.lock', 'w');
+                        clear();
+		?>
+			<table border="0" cellspacing="0" class="tb-b blank5">
+                            <tr>
+                                <th><?php echo $lang['install_success']; ?></th>
+                            </tr>
+                            <tr>
+                                <td><?php echo $lang['install_success_intro']; ?></td>
+                            </tr>
+			</table>
+			<div align="center">
+                            <input type="button" value="<?php echo $lang['go_admin']; ?>" onclick="window.location.href='../admin'" class="input-btn-b" />
+			</div>
+		<?php 		
+                    }else{
+		?>
+                    <table border="0" cellspacing="0" class="tb-b blank5">
+                        <tr>
+                            <th><?php echo $lang['install_failure']; ?></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <?php echo "<font color='red'>".$msg."</font>";	?>
+                                <?php echo $lang['reinstall']; ?>
+                            </td>
+                        </tr>
+                    </table>
+		<?php } ?>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>

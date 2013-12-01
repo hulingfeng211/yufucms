@@ -1,0 +1,277 @@
+/* CSS Document */
+body { 
+    margin: 0px; 
+    padding: 0px; 
+    font-size: 12px; 
+    color:#646464;
+}
+.t_c {
+    text-align: center;
+}
+.t_l { 
+    text-align: left;
+}
+.t_r { 
+    text-align: right;
+}
+.f_l { 
+    float: left; 
+}
+.f_r { 
+    float: right; 
+}
+.p_n { 
+    padding: 0px; 
+}
+.p_5_l { 
+    padding-left: 5px; 
+}
+.m_n {
+    margin: 0px; 
+}
+.d_b { 
+    display: block;
+}
+.clear { 
+    clear: both; 
+} 
+.clear1 { 
+    clear: both; 
+    border-bottom: 2px solid #2AA70C; 
+} 
+.blank5 { 
+    margin-top: 5px;
+}
+.blank10 { 
+    margin-top: 10px;
+}
+.blank5_r { 
+    margin-right: 5px;
+}
+.blank10_r { 
+    margin-right: 10px;
+}
+.b-box { 
+    width: 950px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+.b-div { 
+    height: 30px; 
+    background:#FFF; 
+}
+h1{ 
+    font-size: 16px; 
+    font-weight: bold;
+    padding: 0px; 
+    margin: 0px;
+}
+a { 
+    color: #359AFF; 
+    text-decoration: none; 
+}
+a:hover { 
+    color: #359AFF; 
+    text-decoration: underline; 
+}
+.red { 
+    color: #FF0000; 
+}
+.blue { 
+/*    color: #367ABB;*/
+    color: #2AA70C;
+    font-weight: bold;
+}
+table{
+    border: 1px solid #424242;
+    border-right: none;
+    
+}
+table td{
+    border-right: 1px solid #424242;
+    border-top: 1px solid #424242;
+}
+.tb-b { 
+    background: #EEF3F7; 
+    line-height: 24px; 
+    width: 100%; 
+    
+}
+.tb-b.center{
+    text-align: center;
+}
+.tb-b th { 
+    background: #F5F5F5; 
+    color: #646464; 
+    padding: 0px 10px; 
+    font-weight: blod; 
+    text-align: left; 
+    background: #424242;
+    color: #FFF;
+}
+.tb-b th.center { 
+    text-align: center;
+}
+.tb-b td { 
+    background: #FFF; 
+    padding:5px 10px; 
+    color: #424242;
+}
+.tb-b td.fc{
+    color: #424242;
+    font-weight: bold;
+    border-right: 1px solid #424242;
+}
+.header {
+    height: 20px;
+    background: #E9E9E9;
+}
+.header .userinfo { 
+    margin: 3px 0 0 0; 
+}
+.cbody { 
+    background: #FFF;
+}
+.b-area-b { 
+    width:780px; 
+    background: #359AFF; 
+    color: #FFF; 
+    padding: 0 5px; 
+    line-height: 28px;  
+}
+.b-area-w { 
+    width:778px; 
+    padding: 10px; 
+    margin: auto;
+    font-size: 14px;
+}
+
+.b-area-w .sidebar {
+    list-style: none; 
+    margin: 0px; 
+    padding: 0px;
+}
+.b-area-w .sidebar li { 
+    float: left; 
+    list-style: none; 
+    color: #646464; 
+    line-height: 28px; 
+    text-align: center; 
+    width: 155px; 
+    font-size: 14px;
+}
+
+.b-area-w .sidebar .home-link { 
+    color: #FFF; 
+    background: #3A6EA5 url(install.png) no-repeat 5px 7px; 
+    line-height: 28px; 
+    text-indent: 25px; 
+    width: 155px; 
+}
+.b-area-w .sidebar .step-link { 
+    color: #FFF; 
+/*    background: #81B75D url(installbarbg.png) no-repeat 5px center; */
+    background: #2AA70C;
+    line-height: 28px; 
+    width: 155px; 
+    font-weight: bold;
+}
+
+.cbody h4 { 
+    padding: 0 0 0 5px; 
+    margin: 5px 0;
+    border-left: 5px solid #3A6EA5;  
+}
+.cbody .pages { 
+    border: 1px solid #359AFF; 
+    line-height: 24px;
+    padding: 0 5px; 
+}
+/* Input */
+.input-a { 
+    border: 1px solid #999; 
+    width: 160px; 
+    color: #359AFF; 
+    background: #FFF; 
+}
+.input-b { 
+    width: 200px; 
+    color: #333; 
+    height: 24px; 
+    border: 1px solid #D4D4D4;
+    padding-left: 3px;
+}
+.input-bb { 
+    width: 125px; 
+    color: #333; 
+    height: 20px; 
+}
+.input-bbb { 
+    width: 30px; 
+    color: #333; 
+    height: 20px; 
+}
+.input-btn { 
+    border: none; 
+    background: #fff; 
+    color: #359AFF; 
+    margin: 5px 0px; 
+    padding: 0px 5px; 
+    line-height: 18px; 
+    cursor: pointer; 
+}
+.input-btn-b { 
+    width: 75px;
+    height: 26px;
+    color: #FFF; 
+    cursor: pointer; 
+    background: url("../img/btnstart.png") no-repeat left center;
+    border: none;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.input-btn-c { 
+    border: 1px solid #3A6EA5; 
+    background: #3A6EA5; 
+    color: #FFF; 
+    margin: 0; 
+    padding: 0px 5px; 
+    line-height: 14px; 
+    cursor: pointer; 
+}
+.b-btn { 
+    color: #FFF; 
+    background: #359AFF; 
+    border: 1px solid #359AFF;
+    height: 24px; 
+    line-height: 24px; 
+    padding: 0 12px; 
+    cursor: pointer; 
+}
+.input-textarea { 
+    border: none; 
+    color: #434343; 
+    background: #EBF1F1; 
+    font-size: 12px; 
+    line-height: 18px; 
+    width: 776px; 
+    height: 550px; 
+    padding-left: 3px;
+}
+.import-echo { 
+    border: none; 
+    color: #359AFF; 
+    background: #FFF; 
+    font-size: 12px; 
+    line-height: 18px; 
+    width: 100%; 
+    height: 200px; 
+    overflow-y: scroll;
+}
+
+/*********底部*************/
+.footer { 
+    height: 45px; 
+    line-height: 45px; 
+    text-align: center;
+}

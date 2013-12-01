@@ -1,0 +1,325 @@
+<?php include tpl("header");?>
+<div class="b-area-w">
+	<ul class="sidebar">
+		<li><?php echo $lang['install_step_license']; ?></li>
+		<li class="step-link"><?php echo $lang['install_step_os']; ?></li>
+		<li><?php echo $lang['install_step_option']; ?></li>
+		<li><?php echo $lang['install_step_finish']; ?></li>
+	</ul>
+    </div>
+    <div class="clear1"></div>
+<div class="cbody b-box">
+    
+	<div class="b-area-w">
+		
+		<table border="0" cellspacing="0" class="tb-b center">
+			<tr>
+                            <th class="center" width="140" >检查项目</th>
+                            <th class="center" width="308">当前环境</th>
+                            <th class="center" width="182" >YUFUCMS建议</th>
+                            <th class="center">功能影响</th>
+				
+			</tr>
+			<tr>
+				<td class="fc"><?php echo $lang['php_os']; ?></td>
+				<td><?php echo php_uname();?></td>
+                                <td>Windows_NT/Linux/Freebsd</td>
+                                <td><?php result(1, 1);?></td>
+			</tr>
+                        <tr>
+				<td width="140" class="fc">WEB服务器</td>
+				<td><?php echo $_SERVER['SERVER_SOFTWARE'];?></td>
+                                <td>Apache/Nginx/IIS</td>
+                                <td><?php result(1, 1);?></td>
+			</tr>
+			<tr>
+				<td class="fc"><?php echo $lang['php_version']; ?></td>
+				<td><?php echo phpversion();?></td>
+                                <td>PHP 5.2.0 及以上</td>
+                                <td><?php
+                                    if(phpversion() < '5.2.0'){
+                                            result(0, 1);
+                                            $quit = TRUE;
+                                        }else{
+                                            result(1, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+			
+			<tr>
+				<td class="fc">MYSQL扩展</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('mysql')){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+                                </td>
+                                <td><strong><?php echo $lang['mustopen'];?></strong></td>
+                                <td>
+                                    <?php 
+                                        if(extension_loaded('mysql')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+                        </tr>
+                        <tr>
+				<td class="fc">ICONV/MB_STRING</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('iconv')||extension_loaded('mbstring')){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><strong><?php echo $lang['mustopen'];?></strong></td>
+                                <td>
+                                    <?php 
+                                        if(extension_loaded('iconv')||extension_loaded('mbstring')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        <tr>
+				<td class="fc">JSON扩展</td>
+				<td>
+                                    <?php
+                                        if($PHP_JSON){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><strong><?php echo $lang['mustopen'];?></strong></td>
+                                <td>
+                                    <?php 
+                                        if($PHP_JSON){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        <tr>
+				<td class="fc">CURL扩展</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('curl')){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><strong><?php echo $lang['mustopen'];?></strong></td>
+                                <td>
+                                    <?php
+                                        if(extension_loaded('curl')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+                        </tr>
+                        <tr>
+				<td class="fc">GD扩展</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('gd')){
+                                            echo $lang['support'].'（png jpg gif）';
+
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><strong><?php echo $lang['mustopen'];?></strong></td>
+                                <td>
+                                    <?php 
+                                        if(extension_loaded('gd')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+                        </tr>
+                        <tr>
+				<td class="fc">ZLIB扩展</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('zlib')){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><?php echo $lang['suggestopen'];?></td>
+                                <td>
+                                    <?php
+                                        if(extension_loaded('zlib')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+                        </tr>
+                        
+                        
+			<tr>
+				<td class="fc">FTP扩展</td>
+				<td>
+                                    <?php
+                                        if(extension_loaded('ftp')){
+                                            echo $lang['support'];
+
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><?php echo $lang['suggestopen'];?></td>
+                                <td>
+                                    <?php 
+                                        if(extension_loaded('ftp')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        <tr>
+				<td class="fc">allow_url_fopen</td>
+				<td>
+                                    <?php
+                                        if(ini_get('allow_url_fopen')){
+                                            echo $lang['support'];
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                            $quit = TRUE;
+                                        }
+                                    ?>
+				</td>
+                                <td><?php echo $lang['suggestopen'];?></td>
+                                <td>
+                                    <?php 
+                                        if(ini_get('allow_url_fopen')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        <tr>
+				<td class="fc">fsockopen</td>
+				<td>
+					<?php
+						if(function_exists('fsockopen')){
+							echo $lang['support'];
+							
+						}else{
+							echo '<span class="red">'.$lang['unsupport'].'</span>';
+					
+							$quit = TRUE;
+						}
+					?>
+				</td>
+                                <td><?php echo $lang['suggestopen'];?></td>
+                                <td>
+                                    <?php
+                                        if(function_exists('fsockopen')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        <tr>
+				<td class="fc"><?php echo $lang['file_upload']; ?></td>
+				<td>
+                                    <?php
+                                        if(@ini_get('file_uploads')){
+                                            echo $lang['support'],'/',@ini_get('upload_max_filesize');
+                                        }else{
+                                            echo '<span class="red">'.$lang['unsupport'].'</span>';
+                                        }
+                                    ?>
+				</td>
+                                <td><?php echo $lang['suggestopen'];?></td>
+                                <td>
+                                    <?php
+                                        if(@ini_get('file_uploads')){
+                                            result(1, 1);
+                                        }else{
+                                            result(0, 1);
+                                        }
+                                    ?>
+                                </td>
+			</tr>
+                        
+		</table>
+		<table border="0" cellspacing="0" class="tb-b center blank5">
+			<tr>
+				<th class="center" width="140">目录文件</th>
+                                <th class="center" width="308">当前状态</th>
+                                <th class="center" width="182">所需状态</th>
+                                <th class="center">功能影响</th>
+			</tr>
+                        <?php 
+                            
+                            
+                            foreach($dirarray as $key => $dir){
+                                    echo '<tr>';
+                                        echo '<td>'.$dir.'</td>';
+                                    if(writable($dir)){
+                                            echo '<td>可写</td>';;
+                                    }else{
+                                            echo '<td>不可写</td>';;
+                                            $quit = TRUE;
+                                    }
+                                    echo '<td>可写</td>';
+                                    if(writable($dir)){
+                                            echo '<td>'.result(1, 0).'</td>';;
+                                    }else{
+                                            echo '<td>'.result(0, 0).'</td>';;
+                                            $quit = TRUE;
+                                    }
+                                    echo '</tr>';
+                            }
+                        ?>
+			
+		</table>
+		<div align="center">
+			<input type="button" value="<?php echo $lang['install_btn_prev']; ?>" onclick="window.location.href='index.php'" class="input-btn-b" />
+			<input type="button" value="<?php echo $lang['install_btn_next']; ?>" onclick="window.location.href='index.php?step=3'" class="input-btn-b" />
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<?php include tpl("footer");?>
